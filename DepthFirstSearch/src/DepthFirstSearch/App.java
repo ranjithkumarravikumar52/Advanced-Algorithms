@@ -36,8 +36,11 @@ public class App {
 
         D.addNeighborVertex(H);
 
-        DFS dfs = new DFS();
-        dfs.doDFS(root);
+//        DFS dfs = new DFS();
+//        dfs.doDFS(root);
+        DFS dfs1 = new DFS();
+        System.out.println("with recursion");
+        dfs1.doDFSWithRecursion(root);
 
     }
 }
