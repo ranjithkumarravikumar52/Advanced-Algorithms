@@ -36,3 +36,8 @@
   * traverse all its neighbors till you reach a dead-end
   * while traversing each node, set its attribute "visited" to true
   * once a dead-end has been reached add it to the stack
+* OOP design
+  * Entities
+    * Graph: which contains list of all the vertices
+      * topologicalSort() method 
+    * Vertex: which contains data, and list of neighboring vertex
