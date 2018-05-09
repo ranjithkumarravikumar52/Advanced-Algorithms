@@ -9,9 +9,10 @@ public class Graph {
     private Stack<Vertex> stack; 
     private List<Vertex> listOfAllVertices; 
 
-    public Graph() {
+    public Graph(List<Vertex> listOfAllVertices) {
+        //to include all the clusters of a graph
         this.listOfAllVertices = new ArrayList<>();
-        //init stack too
+        this.listOfAllVertices = listOfAllVertices;
         this.stack = new Stack<>();
     }
 
@@ -36,11 +37,11 @@ public class Graph {
         return "Graph{" + "listOfAllVertices: \n" + listOfAllVertices + '}';
     }
     
-    public void doTopologicalSort(Vertex currentVertex){
+    private void doTopologicalRecursion(Vertex currentVertex){
         currentVertex.setVisited(true);
         for(Vertex vertexIndex : currentVertex.getNeighborsList()){
             if(!vertexIndex.isVisited()){
-                doTopologicalSort(vertexIndex);
+                doTopologicalRecursion(vertexIndex);
             }
         }
         //when code reaches here, it means that traversal of a specific path has reached to a deadend. 
@@ -48,7 +49,22 @@ public class Graph {
         stack.push(currentVertex);
     }
     
-    
-    
+    public void doTopologicalSort(Vertex currentVertex){
+        doTopologicalRecursion(currentVertex);
+        //to consider any wrangler-clusters of a graph
+        for(Vertex vertexIndex: this.listOfAllVertices){
+            if(!vertexIndex.isVisited()){
+                doTopologicalRecursion(vertexIndex);
+            }
+        }
+        displayStack();
+    }
+
+    private void displayStack() {
+        while(!stack.isEmpty()){
+            System.out.print(stack.pop()+" ");
+        }
+        System.out.println();
+    }
     
 }
