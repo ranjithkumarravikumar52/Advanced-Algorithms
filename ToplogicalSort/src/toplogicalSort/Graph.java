@@ -65,6 +65,32 @@ public class Graph {
             System.out.print(stack.pop()+" ");
         }
         System.out.println();
+    } 
+    
+    public void detectCycle(Vertex currentVertex){
+        //if(bV == false)
+            //currentVertex bV = true
+            //check all neighbors
+            //while backtracking add it into stack
+                //if 
+            //push into stack
+            //isV = true
+        //else
+            //detected a cycle
+       if(!currentVertex.isBeingVisited()){
+           currentVertex.setBeingVisited(true);
+           for(Vertex vertexIndex: currentVertex.getNeighborsList()){
+               if(!vertexIndex.isVisited()){
+                   detectCycle(vertexIndex);
+               }
+           }
+           stack.push(currentVertex);
+           currentVertex.setVisited(true);
+       }
+       else{
+           System.out.println("Cycle detected");
+       }
+        
     }
     
 }

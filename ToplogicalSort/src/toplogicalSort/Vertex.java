@@ -7,7 +7,18 @@ public class Vertex {
 
     private String vertexName;
     private List<Vertex> neighborsList;
+    //set when the traversal mets a dead end and before initiating backtracking
     private boolean visited;
+    //set when the DFS is in-progress
+    private boolean beingVisited; 
+
+    public boolean isBeingVisited() {
+        return beingVisited;
+    }
+
+    public void setBeingVisited(boolean beingVisited) {
+        this.beingVisited = beingVisited;
+    }
 
     public Vertex(String vertexName) {
         this.vertexName = vertexName;
@@ -37,7 +48,7 @@ public class Vertex {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
-
+    
     @Override
     public String toString() {
         return vertexName + " ";

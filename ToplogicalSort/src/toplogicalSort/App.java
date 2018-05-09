@@ -49,9 +49,11 @@ public class App {
         v2.addNeighborsList(v5);
 
         v3.addNeighborsList(v4);
-        v3.addNeighborsList(v5);
+//        v3.addNeighborsList(v5);
 
         v4.addNeighborsList(v5);
+        
+        v5.addNeighborsList(v3);
 
         List<Vertex> list = new ArrayList<>();
         list.add(v0);
@@ -62,6 +64,7 @@ public class App {
         list.add(v5);
 
         Graph example2 = new Graph(list);
+        example2.detectCycle(v5);
 
 //        example2.doTopologicalSort(v2);
     }
